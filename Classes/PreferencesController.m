@@ -61,6 +61,7 @@
     [TSUserDefaults setKey:@"AutoSelectHDVersion"       fromBool:NO];
     [TSUserDefaults setKey:@"UseAdditionalSourcesHD"    fromBool:YES];
     [TSUserDefaults setKey:@"PreferMagnets"             fromBool:NO];
+    [TSUserDefaults setKey:@"PreferDDLs"             fromBool:NO];
     [TSUserDefaults setKey:@"checkDelay"                fromFloat:1];
     [TSUserDefaults setKey:@"downloadFolder"            fromString:[NSHomeDirectory() stringByAppendingPathComponent:@"Downloads"]];
     [TSUserDefaults setKey:@"GrowlOnAppUpdate"          fromBool:YES];
@@ -124,6 +125,10 @@
     // Prefer magnet links
     [preferMagnets setTitle:TSLocalizeString(@"Prioritize Magnet links (select this if The Pirate Bay is blocked)")];
     [preferMagnets setState:[TSUserDefaults getBoolFromKey:@"PreferMagnets" withDefault:NO]];
+    
+    // Prefer direct downloads
+    [preferDDLs setTitle:TSLocalizeString(@"Prioritize direct downloads")];
+    [preferDDLs setState:[TSUserDefaults getBoolFromKey:@"PreferDDLs" withDefault:NO]];
     
     // Check for new episodes every...
     [episodeCheckText setStringValue:TSLocalizeString(@"Check for episodes every:")];
@@ -306,6 +311,15 @@
     [autoOpenDownloadedFiles setEnabled:![preferMagnets state]];
     [sortInFolders setEnabled:![preferMagnets state]];
     [sortInSeasonFolders setEnabled:(![preferMagnets state] && [sortInFolders state])];
+}
+
+- (IBAction) preferDDLsDidChange:(id)sender
+{
+    [TSUserDefaults setKey:@"PreferDDLs" fromBool:[preferDDLs state]];
+    [downloadLocationMenu setEnabled:![preferDDLs state]];
+    [autoOpenDownloadedFiles setEnabled:![preferDDLs state]];
+    [sortInFolders setEnabled:![preferDDLs state]];
+    [sortInSeasonFolders setEnabled:(![preferDDLs state] && [sortInFolders state])];
 }
 
 #pragma mark -

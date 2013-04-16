@@ -46,6 +46,8 @@
     IBOutlet NSButton *autoSelectHDVersion;
     IBOutlet NSButton *useAdditionalSourcesHD;
     IBOutlet NSButton *preferMagnets;
+    IBOutlet NSButton *preferDDLs;
+
     
     // Growl Settings
     IBOutlet NSTextField *growlNotifyText;

@@ -15,7 +15,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface TSTorrentFunctions : NSObject {
+@interface TSTorrentFunctions : NSObject  {
 }
 
 + (BOOL) dataIsValidTorrent:(NSData *)data;

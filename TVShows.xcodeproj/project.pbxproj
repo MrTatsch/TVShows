@@ -194,6 +194,9 @@
 		57F7062D13AF3798002A83E4 /* Cover-Bluray.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F7062C13AF3798002A83E4 /* Cover-Bluray.png */; };
 		57FBDC4D13B4C5B6006E0617 /* NSXMLNode-utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A82B1013953A3500E71F7F /* NSXMLNode-utils.m */; };
 		57FDFEBB13A94E310019EDB6 /* TheTVDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 347B35D51210DB6000F4BFF0 /* TheTVDB.m */; };
+		789CA7DE170EB2960051B117 /* TSDDLFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 789CA7DD170EB2960051B117 /* TSDDLFunctions.m */; };
+		789CA7E0170EC19C0051B117 /* TSDDLFunctions.h in Sources */ = {isa = PBXBuildFile; fileRef = 789CA7DF170EB2FE0051B117 /* TSDDLFunctions.h */; };
+		789CA7E1170EC19C0051B117 /* TSDDLFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 789CA7DD170EB2960051B117 /* TSDDLFunctions.m */; };
 		8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F506C035013D953901CA16C8 /* PreferencePanes.framework */; };
 		F1BB481C1532836C00CDE2A8 /* PTViewSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB481B1532836C00CDE2A8 /* PTViewSubclass.m */; };
@@ -479,6 +482,8 @@
 		57EBC9F91482A6FA006E068F /* arrow-this.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-this.png"; sourceTree = "<group>"; };
 		57F7062913AF32E5002A83E4 /* Cover-DVD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cover-DVD.png"; sourceTree = "<group>"; };
 		57F7062C13AF3798002A83E4 /* Cover-Bluray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cover-Bluray.png"; sourceTree = "<group>"; };
+		789CA7DD170EB2960051B117 /* TSDDLFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDDLFunctions.m; sourceTree = "<group>"; };
+		789CA7DF170EB2FE0051B117 /* TSDDLFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDDLFunctions.h; sourceTree = "<group>"; };
 		8D202CF80486D31800D8A456 /* TVShows.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVShows.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1BB481A1532836C00CDE2A8 /* PTViewSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTViewSubclass.h; sourceTree = "<group>"; };
 		F1BB481B1532836C00CDE2A8 /* PTViewSubclass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTViewSubclass.m; sourceTree = "<group>"; };
@@ -871,6 +876,8 @@
 				57A82B1013953A3500E71F7F /* NSXMLNode-utils.m */,
 				5786454C13B1380900C840C3 /* TSTorrentFunctions.h */,
 				5786454D13B1380900C840C3 /* TSTorrentFunctions.m */,
+				789CA7DF170EB2FE0051B117 /* TSDDLFunctions.h */,
+				789CA7DD170EB2960051B117 /* TSDDLFunctions.m */,
 			);
 			name = "Helper Classes";
 			sourceTree = "<group>";
@@ -1059,7 +1066,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Víctor Pimentel";
 			};
 			buildConfigurationList = 1DBD214C08BA80EA00186707 /* Build configuration list for PBXProject "TVShows" */;
@@ -1180,7 +1187,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "BUILD_VERSION=`/usr/bin/env git log --pretty=format:'' | wc -l | egrep '[0-9]{1,}' -o`\nBUILD_DATE=`git log -1 --pretty=format:'%cD' | awk '{print $3 \" \" $2 \", \" $4}'`\nRELEASE_VERSION=`cat ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/VERSION`\n\n/usr/libexec/PListBuddy -c \"Set CFBundleVersion $BUILD_VERSION\" ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\n/usr/libexec/PListBuddy -c \"Set TSBundleBuildDate $BUILD_DATE\" ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\n/usr/libexec/PListBuddy -c \"Set CFBundleShortVersionString $RELEASE_VERSION\" ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}";
+			shellScript = "BUILD_VERSION=`/usr/bin/env git log --pretty=format:'' | wc -l | egrep '[0-9]{1,}' -o`\nBUILD_DATE=`git log -1 --pretty=format:'%cD' | awk '{print $3 \" \" $2 \", \" $4}'`\nRELEASE_VERSION=`cat ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/VERSION`\n\n/usr/libexec/PlistBuddy -c \"Set CFBundleVersion $BUILD_VERSION\" ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\n/usr/libexec/PlistBuddy -c \"Set TSBundleBuildDate $BUILD_DATE\" ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\n/usr/libexec/PlistBuddy -c \"Set CFBundleShortVersionString $RELEASE_VERSION\" ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}";
 		};
 		575C0D5C136A4F26005DE73D /* Generate Version */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1194,7 +1201,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "BUILD_VERSION=`/usr/bin/env git log --pretty=format:'' | wc -l | egrep '[0-9]{1,}' -o`\nBUILD_DATE=`git log -1 --pretty=format:'%cD' | awk '{print $3 \" \" $2 \", \" $4}'`\nRELEASE_VERSION=`cat ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/VERSION`\n\n/usr/libexec/PListBuddy -c \"Set CFBundleVersion $BUILD_VERSION\" ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\n/usr/libexec/PListBuddy -c \"Set TSBundleBuildDate $BUILD_DATE\" ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\n/usr/libexec/PListBuddy -c \"Set CFBundleShortVersionString $RELEASE_VERSION\" ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}";
+			shellScript = "BUILD_VERSION=`/usr/bin/env git log --pretty=format:'' | wc -l | egrep '[0-9]{1,}' -o`\nBUILD_DATE=`git log -1 --pretty=format:'%cD' | awk '{print $3 \" \" $2 \", \" $4}'`\nRELEASE_VERSION=`cat ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/VERSION`\n\n/usr/libexec/PlistBuddy -c \"Set CFBundleVersion $BUILD_VERSION\" ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\n/usr/libexec/PlistBuddy -c \"Set TSBundleBuildDate $BUILD_DATE\" ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\n/usr/libexec/PlistBuddy -c \"Set CFBundleShortVersionString $RELEASE_VERSION\" ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1211,6 +1218,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				789CA7E0170EC19C0051B117 /* TSDDLFunctions.h in Sources */,
+				789CA7E1170EC19C0051B117 /* TSDDLFunctions.m in Sources */,
 				34FBC5F611C0B47F005D290B /* Cache.xcdatamodel in Sources */,
 				34FBC5F711C0B480005D290B /* CacheDelegate.m in Sources */,
 				34FBC5F911C0B49B005D290B /* FPEnclosure.m in Sources */,
@@ -1350,6 +1359,7 @@
 				57D19A2413AEF44B00BDE873 /* LROverflowButton.m in Sources */,
 				5786454E13B1380900C840C3 /* TSTorrentFunctions.m in Sources */,
 				F1BB481C1532836C00CDE2A8 /* PTViewSubclass.m in Sources */,
+				789CA7DE170EB2960051B117 /* TSDDLFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1439,13 +1449,15 @@
 		1DBD214908BA80EA00186707 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1455,10 +1467,13 @@
 					PREFPANE,
 					DEBUG,
 				);
+				GCC_VERSION = "";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = TVShows;
+				SDKROOT = macosx;
+				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = prefPane;
 				ZERO_LINK = YES;
 			};
@@ -1467,6 +1482,9 @@
 		1DBD214A08BA80EA00186707 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1478,10 +1496,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TVShows_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = PREFPANE;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = TVShows;
+				SDKROOT = macosx;
+				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = prefPane;
 			};
 			name = Release;
@@ -1509,11 +1530,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INSTALL_PATH = $HOME/Library/PreferencePanes;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = "-lstdc++";
-				PREBINDING = NO;
 				PRODUCT_NAME = "";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 				VALID_ARCHS = "i386 ppc x86_64";
 				ZERO_LINK = NO;
 			};
@@ -1538,11 +1559,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = "-lstdc++";
-				PREBINDING = NO;
 				PRODUCT_NAME = "";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 				VALID_ARCHS = "i386 ppc x86_64";
 				ZERO_LINK = NO;
 			};
@@ -1552,14 +1573,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_LOCATION = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1567,8 +1589,9 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = relaunch;
+				SDKROOT = macosx;
+				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -1576,13 +1599,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_LOCATION = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1590,8 +1614,9 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = relaunch;
+				SDKROOT = macosx;
+				VALID_ARCHS = "i386 x86_64";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1600,6 +1625,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_LOCATION = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1607,7 +1635,6 @@
 					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1616,6 +1643,7 @@
 					HELPER_APP,
 					DEBUG,
 				);
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "TVShowsHelper-Info.plist";
 				INSTALL_PATH = "$(BUILD_DIR)/$(CONFIGURATION)";
 				OTHER_CFLAGS = "";
@@ -1626,8 +1654,9 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TVShowsHelper;
+				SDKROOT = macosx;
+				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -1635,6 +1664,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1642,11 +1674,11 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TVShows_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = HELPER_APP;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "TVShowsHelper-Info.plist";
 				INSTALL_PATH = "$(BUILD_DIR)/$(CONFIGURATION)";
 				OTHER_CFLAGS = "";
@@ -1657,8 +1689,9 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TVShowsHelper;
+				SDKROOT = macosx;
+				VALID_ARCHS = "i386 x86_64";
 				ZERO_LINK = NO;
 			};
 			name = Release;

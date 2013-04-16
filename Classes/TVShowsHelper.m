@@ -24,6 +24,8 @@
 #import "TSRegexFun.h"
 #import "TheTVDB.h"
 #import "TSTorrentFunctions.h"
+#import "TSDDLFunctions.h"
+
 
 @implementation TVShowsHelper
 
@@ -741,9 +743,13 @@
                 }
                 
                 // Otherwise download the episode! With mirrors (they are stored in a string separated by #)
-                if (!downloaded && [TSTorrentFunctions downloadEpisode:episode ofShow:show]) {
+                
+                if (!downloaded && [TSDDLFunctions downloadEpisode:episode ofShow:show]) {
                     downloaded = YES;
-                    
+                    // Checkin the episode on Miso
+                    [self checkinEpisode:[episode valueForKey:@"episodeName"] ofShow:[show valueForKey:@"name"]];
+                } else if (!downloaded && [TSTorrentFunctions downloadEpisode:episode ofShow:show]) {
+                    downloaded = YES;
                     // Checkin the episode on Miso
                     [self checkinEpisode:[episode valueForKey:@"episodeName"] ofShow:[show valueForKey:@"name"]];
                 }

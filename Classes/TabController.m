@@ -859,6 +859,13 @@
                                  ([TSUserDefaults getBoolFromKey:@"PreferMagnets" withDefault:NO] ? @"Yes" : @"No" ), @"displayValue",
                                  nil];
     
+    NSDictionary *ddlsDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"ddls", @"key",
+                                 ([TSUserDefaults getBoolFromKey:@"PreferDDLs" withDefault:NO] ? @"Yes" : @"No" ), @"value",
+                                 @"Use ddls", @"displayKey",
+                                 ([TSUserDefaults getBoolFromKey:@"PreferDDLs" withDefault:NO] ? @"Yes" : @"No" ), @"displayValue",
+                                 nil];
+    
     NSDictionary *misoDict = [NSDictionary dictionaryWithObjectsAndKeys:
                               @"miso", @"key",
                               ([TSUserDefaults getBoolFromKey:@"MisoEnabled" withDefault:NO] ? @"Yes" : @"No" ), @"value",
